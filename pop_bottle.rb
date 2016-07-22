@@ -5,8 +5,6 @@ BOTTLE_COST = 2
 @total_bottles = 0 
 @bottles = 0
 @caps = 0
-@free_from_caps = 0
-@free_from_bottles = 0
 
 
 def buy_bottles(investment)
@@ -14,6 +12,8 @@ def buy_bottles(investment)
   @total_bottles = bottles_bought
   @bottles = bottles_bought
   @caps = bottles_bought
+  @free_from_caps = 0
+  @free_from_bottles = 0
 
   redeem
   show_info(investment, bottles_bought)
@@ -64,7 +64,7 @@ def redeemable?
 end
 
 def run_bottle_info
-  loop do
+  while true
     print "How much are you going to spend on pop? "
     answer = gets.chomp
     break if answer.include?('quit') || answer.include?('exit')
